@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MvcNetCoreSergioAlcazar.Models.Libro>
+
+@{
+    ViewData["Title"] = "Carrito";
+    List<Libro> libros = null;
+    if (Context.Session.GetObject<List<Libro>>("Carrito") == null)
+    {
+        libros = new List<Libro>();
+    }
+    else
+    {
+        libros = Context.Session.GetObject<List<Libro>>("Carrito");
+    }
+}
+
+<h1>Carrito</h1>
+
+@if (libros.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdLibro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Editorial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Portada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resumen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdGenero)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdLibro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Editorial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Portada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Resumen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdGenero)
+                    </td>
+                    <td>
+                        <a asp-controller="Libros" asp-action="EliminarCarrito" asp-route-id="@item.IdLibro">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-secondary" asp-controller="Libros" asp-action="FinalizarCompra">FINALIZAR COMPRA</a>
+}else{
+    <h1>NO TIENES NINGUN LIBRO EN EL CARRITO</h1>
+}
+
+

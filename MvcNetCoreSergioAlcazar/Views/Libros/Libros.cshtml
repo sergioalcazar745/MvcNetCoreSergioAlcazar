@@ -1,0 +1,24 @@
+﻿@model List<Libro>
+<h1 class="text-center">LIBROS</h1>
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item list-group-item-success">
+        <a asp-action="Libros" asp-controller="Libros" asp-route-posicion="@ViewData["ANTERIOR"]">ANTERIOR</a>
+    </li>
+    <li class="list-group-item list-group-item-success">
+        <a asp-action="Libros" asp-controller="Libros" asp-route-posicion="@ViewData["SIGUIENTE"]">SIGUIENTE</a>
+    </li>
+</ul>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="~/images/@item.Portada" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Titulo</h5>
+                <p class="card-text">@item.Resumen</p>
+                <h3>@item.Precio€</h3>
+                <a asp-action="DetallesLibros" asp-controller="Libros" asp-route-id="@item.IdLibro" class="btn btn-primary">Detalles</a>
+            </div>
+        </div>
+    }
+</div>

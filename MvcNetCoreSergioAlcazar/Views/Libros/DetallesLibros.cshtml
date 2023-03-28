@@ -1,0 +1,66 @@
+﻿@model MvcNetCoreSergioAlcazar.Models.Libro
+
+@{
+    ViewData["Title"] = "DetallesLibros";
+}
+
+<h1>DetallesLibros</h1>
+
+<div>
+    <h4>Libro</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLibro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLibro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Editorial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Editorial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Portada)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/images/@Html.DisplayFor(model => model.Portada)" width="200" height="200"/>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Resumen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Resumen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdGenero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdGenero)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-secondary" asp-action="AñadirCarrito" asp-controller="Libros" asp-route-id="@Model.IdLibro">Comprar</a>
+    <a class="btn btn-danger" asp-action="Libros" asp-controller="Libros">Back to List</a>
+</div>

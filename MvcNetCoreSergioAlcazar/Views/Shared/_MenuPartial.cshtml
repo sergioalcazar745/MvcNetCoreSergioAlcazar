@@ -1,0 +1,30 @@
+﻿@{
+    List<Libro> libros = Context.Session.GetObject<List<Libro>>("Carrito");
+    if (libros == null)
+    {
+        libros = new List<Libro>();
+    }
+}
+
+@if (libros.Count > 0)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Libros" asp-action="Carrito">Carrito: @libros.Count</a>
+    </li>
+}
+
+@if (Context.User.Identity.IsAuthenticated == true)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Perfil">Hola @Context.User.FindFirst(ClaimTypes.Name).Value</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Managed" asp-action="Logout">Cerrar Sesion</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Perfil">Iniciar Sesion</a>
+    </li>
+}

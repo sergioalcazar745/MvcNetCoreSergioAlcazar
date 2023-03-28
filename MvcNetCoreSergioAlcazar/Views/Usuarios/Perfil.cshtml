@@ -1,0 +1,52 @@
+﻿@model MvcNetCoreSergioAlcazar.Models.Usuario
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<h1>Perfil</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pass)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pass)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/images/@Html.DisplayFor(model => model.Foto)" width="200" height="200"/>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Libros" asp-controller="Libros">Back to Libros</a>
+</div>
